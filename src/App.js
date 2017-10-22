@@ -125,11 +125,11 @@ class App extends Component {
       valuesMerged = 4;
     }
 
-    // this.setState(prevState => ({
-    //   tiles: tmpTiles
-    // }));
+    this.setState(prevState => ({
+      tiles: tmpTiles
+    }));
 
-    // this.updateScore(valuesMerged);
+    this.updateScore(valuesMerged);
 
     return numberOfTilesMoved > 0;
   }
