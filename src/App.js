@@ -83,7 +83,7 @@ class App extends Component {
     let numberOfTilesMoved = 0
     let valuesMerged = 0;
 
-    let tmpTiles3 = this.getFilledTiles();
+    let tmpTiles = this.state.tiles;
 
     if (direction === 'left') {
       // for (let row = 0; row <= tmpTiles.length - 1; row++) {
@@ -113,7 +113,7 @@ class App extends Component {
             }
           }
         });
-      // });
+      });
     }
     if (direction === 'right') {
       valuesMerged = 2;
