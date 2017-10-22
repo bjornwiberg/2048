@@ -180,7 +180,7 @@ class App extends Component {
       <div className="app">
         <GameOver restart={this.restart} state={this.state.gameOver} />
         <header>
-          <h1>2048 Clone by Björn Wiberg - {this.state.gameOver}</h1>
+          <h1>2048 Clone by Björn Wiberg</h1>
         </header>
         <Tiles tiles={this.state.tiles} />
         <Scores score={this.state.score} topTileScore={this.state.highestTileScore} />
