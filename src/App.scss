@@ -1,0 +1,123 @@
+.app {
+  text-align: center;
+}
+
+header {
+  background-color: #000;
+  padding: 2vw;
+  color: white;
+}
+
+button {
+  border: 1px solid #e1e1e1;
+}
+
+.overlay {
+  position: fixed;
+  z-index: 1;
+  background-color: rgba(#fff, 0.8);
+  opacity: 0;
+  visibility: hidden;
+  transition: .3s opacity;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  text-transform: uppercase;
+
+  &.active {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .gameOver {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-weight: 700;
+  }
+}
+
+
+.tiles {
+  max-width: 60vw;
+  margin: 2vw auto 0;
+  background-color: #e1e1e1;
+  padding: 1% 0;
+
+  .tile {
+    width: 22%;
+    margin: 1%;
+    box-sizing: border-box;
+    display: inline-block;
+    background-color: #fff;
+
+    &-0 {
+      background-color: hsl(50%, 255, 100%);
+    }
+
+    &-2 {
+      background-color: hsl(50%, 255, 95%);
+    }
+
+    &-4 {
+      background-color: hsl(50%, 255, 90%);
+    }
+
+    &-8 {
+      background-color: hsl(50%, 255, 85%);
+    }
+
+    &-16 {
+      background-color: hsl(50%, 255, 80%);
+    }
+
+    &-32 {
+      background-color: hsl(50%, 255, 75%);
+    }
+
+    &-64 {
+      background-color: hsl(50%, 255, 70%);
+    }
+
+    &-128 {
+      background-color: hsl(50%, 255, 65%);
+    }
+
+    &-256 {
+      background-color: hsl(50%, 255, 60%);
+    }
+
+    &-512 {
+      background-color: hsl(50%, 255, 55%);
+    }
+
+    &-1024 {
+      background-color: hsl(50%, 255, 50%);
+    }
+
+    &-2048 {
+      background-color: hsl(50%, 255, 45%);
+    }
+
+    .inner {
+      padding-bottom: 100%;
+      position: relative;
+
+      .value {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+      }
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  .game {
+    max-width: 95vw;
+  }
+}
+
