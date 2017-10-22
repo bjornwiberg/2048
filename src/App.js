@@ -227,7 +227,7 @@ class Tile extends Component {
     return (
       <div className={`tile tile-${this.props.value}`}>
         <div className="inner">
-          <div className="value">{this.props.value}<br />{this.props.index}</div>
+          <div className="value">{this.props.value}</div>
         </div>
       </div>
     );
