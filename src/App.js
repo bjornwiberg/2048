@@ -98,7 +98,22 @@ class App extends Component {
       DO THE MAGIC
     */
     tmpTiles.forEach(function(row, rowIndex) {
+      // filter out non empty tiles
       tmpTiles[rowIndex] = row.filter(tile => tile != '');
+      // iterate each tiles in filtered row
+      tmpTiles[rowIndex].forEach((tile, tileIndex) => {
+        // if not first tile in row and same value as previous tile in row
+        if (tileIndex > 0 && tile === tmpTiles[rowIndex][tileIndex - 1]) {
+          // double the value of previous column
+          tmpTiles[rowIndex][tileIndex - 1] *= 2;
+          // add the updated tiles value to the score counter
+          valuesMerged += tmpTiles[rowIndex][tileIndex - 1];
+          // remove the tile in current iteration
+          tmpTiles[rowIndex].splice(tileIndex, 1);
+        }
+      })
+
+      // push empty values to array until size matches matrix width
       while (tmpTiles[rowIndex].length < 4) {
         tmpTiles[rowIndex].push('');
       }
