@@ -88,11 +88,21 @@ class App extends Component {
       console.log(`rotate the tile matrix ${rotations} times`);
     }
     tmpTiles = rotateMatrix(tmpTiles, rotations);
+
     
     // merge tiles with same values and move them to left
     /*
       DO THE MAGIC
     */
+    tmpTiles.forEach(function(row, rowIndex) {
+      row.forEach(function(tile, tileIndex) {
+        if (tile === '') {
+          tmpTiles[rowIndex].splice(tileIndex, 1);
+          tmpTiles[rowIndex].push("");
+        }
+      });
+    });
+
     if (this.state.debug === true) {
       console.log(`merge and move tiles`);
     }
