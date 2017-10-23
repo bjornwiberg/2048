@@ -227,8 +227,8 @@ export default App;
 const directionRotates = {
   left: 0,
   right: 2,
-  up: 1,
-  down: 3,
+  up: 3,
+  down: 1,
 }
 const eventKeys = {
   // ARROWS
