@@ -179,7 +179,6 @@ class App extends Component {
   }
 
   render() {
-    let randomButton = <button onClick={() => {this.generateGameTile(1)}}>Slumpa</button>;
     return (
       <div className="app">
         <GameOver restart={this.restart} state={this.state.gameOver} />
