@@ -99,12 +99,10 @@ class App extends Component {
       DO THE MAGIC
     */
     tmpTiles.forEach(function(row, rowIndex) {
-      row.forEach(function(tile, tileIndex) {
-        if (tile === '') {
-          tmpTiles[rowIndex].splice(tileIndex, 1);
-          tmpTiles[rowIndex].push("");
-        }
-      });
+      tmpTiles[rowIndex] = row.filter(tile => tile != '');
+      while (tmpTiles[rowIndex].length < 4) {
+        tmpTiles[rowIndex].push('');
+      }
     });
 
     if (this.state.debug === true) {
