@@ -112,12 +112,11 @@ class App extends Component {
     return numberOfTilesMoved > 0;
   }
 
-  move(direction) {
+  move(action) {
     if (this.state.debug === true) {
-      console.log(`Move tiles to ${direction}`);
+      console.log(`Move tiles to ${action.direction}`);
     }
-
-    if (this.mergeTiles(directionRotates[direction])) {
+    if (this.mergeTiles(directionRotates[action.direction])) {
       this.generateGameTile();
       this.getHighestTileScore();
     }
