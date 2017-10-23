@@ -92,11 +92,13 @@ class App extends Component {
     }
     tmpTiles = rotateMatrix(tmpTiles, rotations);
 
-    
     // merge tiles with same values and move them to left
     /*
       DO THE MAGIC
     */
+    if (this.state.debug === true) {
+      console.log(`merge and move tiles`);
+    }
     tmpTiles.forEach(function(row, rowIndex) {
       // filter out non empty tiles
       tmpTiles[rowIndex] = row.filter(tile => tile != '');
@@ -119,10 +121,6 @@ class App extends Component {
       }
     });
 
-    if (this.state.debug === true) {
-      console.log(`merge and move tiles`);
-    }
-
     // restore the tile matrix to original state
     if (this.state.debug === true) {
       console.log(`rotate the tile matrix ${rotations} times backwards`);
@@ -136,7 +134,6 @@ class App extends Component {
       tiles: tmpTiles,
       allowNewTileToGenerate: anyTilesMoved,
     }));
-
 
     this.updateScore(valuesMerged);
   }
