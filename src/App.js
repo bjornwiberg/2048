@@ -10,6 +10,7 @@ class App extends Component {
     initialTileValue: 2,
     score: 0,
     highestTileScore: 0,
+    allowNewTileToGenerate: true,
     tiles: [
       ['', '', '', ''],
       ['', '', '', ''],
@@ -64,21 +65,24 @@ class App extends Component {
     let freeTiles = this.getFreeTiles();
     let randomTile = Math.floor((Math.random() * (freeTiles.length)));
     let tmpTiles = this.state.tiles;
-    if (freeTiles.length > 0) {
+    console.log(freeTiles.length, this.state.allowNewTileToGenerate);
+    if (freeTiles.length === 0 && !this.state.allowNewTileToGenerate) {
+      this.setState(prevState => ({
+        gameOver: true
+      }));
+    } else if (this.state.allowNewTileToGenerate) {
       tmpTiles[freeTiles[randomTile][0]][freeTiles[randomTile][1]] = this.state.initialTileValue;
       this.setState(prevState => ({
         tiles: tmpTiles
-      }));
-    } else {
-      this.setState(prevState => ({
-        gameOver: true
       }));
     }
   }
 
   mergeTiles(rotations) {
-    let numberOfTilesMoved = 0
     let valuesMerged = 0;
+
+    // stringify state tiles
+    let orginalState = JSON.stringify(this.state.tiles);
 
     // fetch tiles from state into temp array
     let tmpTiles = this.state.tiles;
@@ -113,23 +117,25 @@ class App extends Component {
     }
     tmpTiles = rotateMatrix(tmpTiles, rotations * -1);
 
+    // check if any tiles have been moved
+    let anyTilesMoved = JSON.stringify(tmpTiles) !== orginalState;
+
     this.setState(prevState => ({
-      tiles: tmpTiles
+      tiles: tmpTiles,
+      allowNewTileToGenerate: anyTilesMoved,
     }));
 
-    this.updateScore(valuesMerged);
 
-    return numberOfTilesMoved > 0;
+    this.updateScore(valuesMerged);
   }
 
   move(action) {
     if (this.state.debug === true) {
       console.log(`Move tiles to ${action.direction}`);
     }
-    if (this.mergeTiles(directionRotates[action.direction])) {
-      this.generateGameTile();
-      this.getHighestTileScore();
-    }
+    this.mergeTiles(directionRotates[action.direction]);
+    this.generateGameTile();
+    this.getHighestTileScore();
   }
 
   componentWillMount(){
@@ -155,6 +161,7 @@ class App extends Component {
       score: 0,
       tiles: tmpTiles,
       gameOver: false,
+      allowNewTileToGenerate: true,
     }));
     _.range(0, this.state.initialTiles).forEach(() => {
       this.generateGameTile();
