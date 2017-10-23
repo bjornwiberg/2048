@@ -29,16 +29,12 @@ class App extends Component {
   }
 
   getHighestTileScore() {
-    let highestValue = 0;
-    this.state.tiles.map((row, rowIndex) => {
-      row.map((tile, tileIndex) => {
-        if (tile > highestValue) {
-          highestValue = tile;
-        }
-      });
-    });
     this.setState(prevState => ({
-      highestTileScore: highestValue
+      highestTileScore: (
+        this.state.tiles.reduce(function (max, arr) {
+            return max >= Math.max.apply(max, arr) ? max : Math.max.apply(max, arr);
+        }, -Infinity)
+      )
     }));
     if (this.state.debug === true) {
       console.log(`update and set ${this.state.highestTileScore} to highest tile value`);
@@ -53,8 +49,8 @@ class App extends Component {
 
   getFreeTiles() {
     let freeTiles = [];
-    this.state.tiles.map((row, rowIndex) => {
-      row.map((tile, tileIndex) => {
+    this.state.tiles.forEach(function(row, rowIndex) {
+      row.forEach(function(tile, tileIndex) {
         if (tile === '') {
           freeTiles.push([rowIndex, tileIndex]);
         }
