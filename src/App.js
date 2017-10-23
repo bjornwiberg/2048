@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import _ from 'lodash';
 import rotateMatrix from 'rotate-matrix';
 import './App.css';
 import {directionRotates, eventKeys} from './Constants';
@@ -173,9 +172,9 @@ class App extends Component {
       gameOver: false,
       allowNewTileToGenerate: true,
     }));
-    _.range(0, this.state.initialTiles).forEach(() => {
+    for (var i = this.state.initialTiles - 1; i >= 0; i--) {
       this.generateGameTile();
-    });
+    }
     this.getHighestTileScore();
   }
 
