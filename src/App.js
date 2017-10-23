@@ -65,7 +65,6 @@ class App extends Component {
     let freeTiles = this.getFreeTiles();
     let randomTile = Math.floor((Math.random() * (freeTiles.length)));
     let tmpTiles = this.state.tiles;
-    console.log(freeTiles.length, this.state.allowNewTileToGenerate);
     if (freeTiles.length === 0 && !this.state.allowNewTileToGenerate) {
       this.setState(prevState => ({
         gameOver: true
