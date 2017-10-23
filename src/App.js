@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import _ from 'lodash';
+import rotateMatrix from 'rotate-matrix';
 import './App.css';
 
 class App extends Component {
@@ -46,7 +47,7 @@ class App extends Component {
 
   keyPress(e) {
     if (e.keyCode in eventKeys) {
-      this.move(eventKeys[e.keyCode].direction);
+      this.move(eventKeys[e.keyCode]);
     }
   }
 
@@ -79,51 +80,32 @@ class App extends Component {
     }
   }
 
-  mergeTiles(direction) {
+  mergeTiles(rotations) {
     let numberOfTilesMoved = 0
     let valuesMerged = 0;
 
+    // fetch tiles from state into temp array
     let tmpTiles = this.state.tiles;
 
-    if (direction === 'left') {
-      // for (let row = 0; row <= tmpTiles.length - 1; row++) {
-      //   for (let tile = 0; tile <= tmpTiles[row].length - 1; tile++) {
-      //   //   if (tmpTiles[row][tile-1] === "") {
-      //   //     tmpTiles[row][tile-1] = tile;
-      //   //     numberOfTilesMoved++;
-      //   //   } else if (tile === tmpTiles[row][tile-1]) {
-      //   //     tmpTiles[row][tile-1] *= 2;
-      //   //     valuesMerged += tmpTiles[row][tile-1];
-      //   //     tmpTiles[row][tile] = "";
-      //   //     numberOfTilesMoved++;
-      //   //   }
-      //   }
-      // }
-      this.state.tiles.map((row, rowIndex) => {
-        row.map((tile, tileIndex) => {
-          if (tileIndex > 0) {
-            if (tmpTiles[rowIndex][tileIndex-1] === "") {
-              tmpTiles[rowIndex][tileIndex-1] = tile;
-              numberOfTilesMoved++;
-            } else if (tile === tmpTiles[rowIndex][tileIndex-1]) {
-              tmpTiles[rowIndex][tileIndex-1] *= 2;
-              valuesMerged += tmpTiles[rowIndex][tileIndex-1];
-              tmpTiles[rowIndex][tileIndex] = "";
-              numberOfTilesMoved++;
-            }
-          }
-        });
-      });
+    // rotate the tile matrix
+    if (this.state.debug === true) {
+      console.log(`rotate the tile matrix ${rotations} times`);
     }
-    if (direction === 'right') {
-      valuesMerged = 2;
+    tmpTiles = rotateMatrix(tmpTiles, rotations);
+    
+    // merge tiles with same values and move them to left
+    /*
+      DO THE MAGIC
+    */
+    if (this.state.debug === true) {
+      console.log(`merge and move tiles`);
     }
-    if (direction === 'up') {
-      valuesMerged = 3;
+
+    // restore the tile matrix to original state
+    if (this.state.debug === true) {
+      console.log(`rotate the tile matrix ${rotations} times backwards`);
     }
-    if (direction === 'down') {
-      valuesMerged = 4;
-    }
+    tmpTiles = rotateMatrix(tmpTiles, rotations * -1);
 
     this.setState(prevState => ({
       tiles: tmpTiles
@@ -138,7 +120,8 @@ class App extends Component {
     if (this.state.debug === true) {
       console.log(`Move tiles to ${direction}`);
     }
-    if (this.mergeTiles(direction)) {
+
+    if (this.mergeTiles(directionRotates[direction])) {
       this.generateGameTile();
       this.getHighestTileScore();
     }
@@ -246,6 +229,12 @@ class Scores extends Component {
 
 export default App;
 
+const directionRotates = {
+  left: 0,
+  right: 2,
+  up: 1,
+  down: 3,
+}
 const eventKeys = {
   // ARROWS
   37: {
