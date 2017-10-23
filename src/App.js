@@ -152,11 +152,18 @@ class App extends Component {
       console.log('mount application');
     }
     document.addEventListener("keydown", this.keyPress.bind(this));
-    this.restart();
+    this.start();
   }
 
   componentWillUnmount() {
     document.removeEventListener("keydown", this.keyPress.bind(this));
+  }
+
+  start = () => {
+    for (var i = this.state.initialTiles - 1; i >= 0; i--) {
+      this.generateGameTile();
+    }
+    this.getHighestTileScore();
   }
 
   restart = () => {
@@ -172,10 +179,7 @@ class App extends Component {
       gameOver: false,
       allowNewTileToGenerate: true,
     }));
-    for (var i = this.state.initialTiles - 1; i >= 0; i--) {
-      this.generateGameTile();
-    }
-    this.getHighestTileScore();
+    this.start();
   }
 
   render() {
