@@ -43,11 +43,11 @@ button {
 .landscapeHint {
   background-color: rgba(0, 0, 0, 0.8);
   color: #fff;
-  font-size: 5vw; }
+  font-size: 3.5vw; }
   .landscapeHint .inner {
-    width: 80%; }
+    width: 95%; }
 
-@media (max-width: 1024px) and (max-height: 768px) and (orientation: landscape) {
+@media (max-width: 768px) and (orientation: landscape) {
   html {
     overflow: hidden; }
   .landscapeHint {
