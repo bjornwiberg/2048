@@ -44,7 +44,7 @@ class App extends Component {
 
   keyPress(e) {
     if (e.keyCode in eventKeys) {
-      this.move(eventKeys[e.keyCode]);
+      this.move(eventKeys[e.keyCode].direction);
     }
   }
 
@@ -138,11 +138,11 @@ class App extends Component {
     this.updateScore(valuesMerged);
   }
 
-  move(action) {
+  move(direction) {
     if (this.state.debug === true) {
-      console.log(`Move tiles to ${action.direction}`);
+      console.log(`Move tiles to ${direction}`);
     }
-    this.mergeTiles(directionRotates[action.direction]);
+    this.mergeTiles(directionRotates[direction]);
     this.generateGameTile();
     this.getHighestTileScore();
   }
