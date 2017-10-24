@@ -189,6 +189,7 @@ class App extends Component {
   render() {
     return (
       <div className="app">
+        <LandscapeHint />
         <GameOver state={this.state.gameOver} />
         <Win score={this.state.highestTileScore} />
         <Header text="2048 Clone by Björn Wiberg" />
@@ -196,6 +197,18 @@ class App extends Component {
         <Scores score={this.state.score} topTileScore={this.state.highestTileScore} />
       </div>
     );
+  }
+}
+
+class LandscapeHint extends Component {
+  render() {
+    return (
+      <div className="landscapeHint">
+        <div className="inner">
+          <p>Please rotate screen!</p>
+        </div>
+      </div>
+    )
   }
 }
 
