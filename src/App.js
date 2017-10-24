@@ -200,7 +200,7 @@ class App extends Component {
         <LandscapeHint />
         <GameOver state={this.state.gameOver} />
         <Win score={this.state.highestTileScore} />
-        <Header text="2048 Clone by Björn Wiberg" />
+        <Header text="2048 Clone by Bj&ouml;rn Wiberg" />
         <Swipeable
           onSwipedLeft={() => this.move('left')}
           onSwipedRight={() => this.move('right')}
