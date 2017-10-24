@@ -89,53 +89,51 @@ button {
     display: inline-block;
     background-color: #fff;
     transition: .2s;
-
-    &-0 {
-      background-color: hsl(50%, 255, 100%);
-    }
+    font-weight: 700;
+    font-size: 1.5em;
 
     &-2 {
-      background-color: hsl(50%, 255, 95%);
-    }
-
-    &-4 {
       background-color: hsl(50%, 255, 90%);
     }
 
-    &-8 {
-      background-color: hsl(50%, 255, 85%);
-    }
-
-    &-16 {
+    &-4 {
       background-color: hsl(50%, 255, 80%);
     }
 
-    &-32 {
+    &-8 {
       background-color: hsl(50%, 255, 75%);
     }
 
-    &-64 {
+    &-16 {
       background-color: hsl(50%, 255, 70%);
     }
 
-    &-128 {
+    &-32 {
       background-color: hsl(50%, 255, 65%);
     }
 
-    &-256 {
+    &-64 {
       background-color: hsl(50%, 255, 60%);
     }
 
-    &-512 {
+    &-128 {
       background-color: hsl(50%, 255, 55%);
     }
 
-    &-1024 {
+    &-256 {
       background-color: hsl(50%, 255, 50%);
     }
 
-    &-2048 {
+    &-512 {
       background-color: hsl(50%, 255, 45%);
+    }
+
+    &-1024 {
+      background-color: hsl(50%, 255, 40%);
+    }
+
+    &-2048 {
+      background-color: hsl(50%, 255, 35%);
     }
 
     .inner {

@@ -65,31 +65,31 @@ button {
     box-sizing: border-box;
     display: inline-block;
     background-color: #fff;
-    transition: .2s; }
-    .tiles .tile-0 {
-      background-color: white; }
+    transition: .2s;
+    font-weight: 700;
+    font-size: 1.5em; }
     .tiles .tile-2 {
-      background-color: #fffbe6; }
-    .tiles .tile-4 {
       background-color: #fff7cc; }
-    .tiles .tile-8 {
-      background-color: #fff2b3; }
-    .tiles .tile-16 {
+    .tiles .tile-4 {
       background-color: #ffee99; }
-    .tiles .tile-32 {
+    .tiles .tile-8 {
       background-color: #ffea80; }
-    .tiles .tile-64 {
+    .tiles .tile-16 {
       background-color: #ffe666; }
-    .tiles .tile-128 {
+    .tiles .tile-32 {
       background-color: #ffe14d; }
-    .tiles .tile-256 {
+    .tiles .tile-64 {
       background-color: #ffdd33; }
-    .tiles .tile-512 {
+    .tiles .tile-128 {
       background-color: #ffd91a; }
-    .tiles .tile-1024 {
+    .tiles .tile-256 {
       background-color: #ffd500; }
-    .tiles .tile-2048 {
+    .tiles .tile-512 {
       background-color: #e6bf00; }
+    .tiles .tile-1024 {
+      background-color: #ccaa00; }
+    .tiles .tile-2048 {
+      background-color: #b39500; }
     .tiles .tile .inner {
       padding-bottom: 100%;
       position: relative; }
