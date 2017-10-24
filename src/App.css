@@ -23,6 +23,7 @@ html {
   overflow-x: hidden; }
 
 header {
+  box-sizing: border-box;
   background-color: #000;
   padding: 2vw;
   color: white;
