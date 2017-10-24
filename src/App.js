@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import rotateMatrix from 'rotate-matrix';
 import './App.css';
 import {directionRotates, eventKeys, goalScore} from './Constants';
+import Swipeable from 'react-swipeable'
 
 class App extends Component {
   state = {
@@ -200,7 +201,14 @@ class App extends Component {
         <GameOver state={this.state.gameOver} />
         <Win score={this.state.highestTileScore} />
         <Header text="2048 Clone by Björn Wiberg" />
-        <Tiles tiles={this.state.tiles} />
+        <Swipeable
+          onSwipedLeft={() => this.move('left')}
+          onSwipedRight={() => this.move('right')}
+          onSwipedUp={() => this.move('up')}
+          onSwipedDown={() => this.move('down')}
+        >
+            <Tiles tiles={this.state.tiles} />
+        </Swipeable>
         <Scores score={this.state.score} topTileScore={this.state.highestTileScore} />
       </div>
     );
