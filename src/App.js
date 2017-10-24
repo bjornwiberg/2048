@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import rotateMatrix from 'rotate-matrix';
 import './App.css';
+import 'font-awesome/css/font-awesome.min.css';
 import {directionRotates, eventKeys, goalScore} from './Constants';
 import Swipeable from 'react-swipeable'
 
@@ -210,6 +211,7 @@ class App extends Component {
         >
             <Tiles tiles={this.state.tiles} />
         </Swipeable>
+        <Bottom />
       </div>
     );
   }
@@ -308,6 +310,43 @@ class Scores extends Component {
     return (
       <div className="scores">
         Score: {this.props.score}, Top tile score: {this.props.topTileScore}
+      </div>
+    );
+  }
+}
+
+class Bottom extends Component {
+  render() {
+    return (
+      <div className="bottom">
+        <div className="iconWrapper">
+          <div className="title">Touch:</div>
+          <span className="iconButton"><i className="fa fa-hand-o-left"></i></span>
+          <span className="iconButton"><i className="fa fa-hand-o-right"></i></span>
+          <span className="iconButton"><i className="fa fa-hand-o-up"></i></span>
+          <span className="iconButton"><i className="fa fa-hand-o-down"></i></span>
+        </div>
+        <div className="iconWrapper desktop">
+          <div className="title">Arrows:</div>
+          <span className="iconButton"><i className="fa fa-arrow-left"></i></span>
+          <span className="iconButton"><i className="fa fa-arrow-right"></i></span>
+          <span className="iconButton"><i className="fa fa-arrow-up"></i></span>
+          <span className="iconButton"><i className="fa fa-arrow-down"></i></span>
+        </div>
+        <div className="iconWrapper desktop">
+          <div className="title">Gamer:</div>
+          <span className="iconButton">w</span>
+          <span className="iconButton">s</span>
+          <span className="iconButton">a</span>
+          <span className="iconButton">d</span>
+        </div>
+        <div className="iconWrapper desktop">
+          <div className="title">l33t:</div>
+          <span className="iconButton">h</span>
+          <span className="iconButton">j</span>
+          <span className="iconButton">k</span>
+          <span className="iconButton">l</span>
+        </div>
       </div>
     );
   }
