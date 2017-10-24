@@ -54,9 +54,13 @@ button {
     opacity: 1;
     visibility: visible; } }
 
+.scores {
+  padding: 20px 0;
+  font-size: .8em; }
+
 .tiles {
   max-width: 450px;
-  margin: 2vw auto 0;
+  margin: 0 auto;
   background-color: #e1e1e1;
   padding: 1% 0; }
   .tiles .tile {

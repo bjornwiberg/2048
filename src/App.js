@@ -201,6 +201,7 @@ class App extends Component {
         <GameOver state={this.state.gameOver} />
         <Win score={this.state.highestTileScore} />
         <Header text="2048 Clone by Bj&ouml;rn Wiberg" />
+        <Scores score={this.state.score} topTileScore={this.state.highestTileScore} />
         <Swipeable
           onSwipedLeft={() => this.move('left')}
           onSwipedRight={() => this.move('right')}
@@ -209,7 +210,6 @@ class App extends Component {
         >
             <Tiles tiles={this.state.tiles} />
         </Swipeable>
-        <Scores score={this.state.score} topTileScore={this.state.highestTileScore} />
       </div>
     );
   }
