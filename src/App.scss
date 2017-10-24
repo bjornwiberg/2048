@@ -52,6 +52,7 @@ button {
     box-sizing: border-box;
     display: inline-block;
     background-color: #fff;
+    transition: .2s;
 
     &-0 {
       background-color: hsl(50%, 255, 100%);

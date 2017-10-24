@@ -41,7 +41,8 @@ button {
     margin: 1%;
     box-sizing: border-box;
     display: inline-block;
-    background-color: #fff; }
+    background-color: #fff;
+    transition: .2s; }
     .tiles .tile-0 {
       background-color: white; }
     .tiles .tile-2 {
