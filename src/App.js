@@ -139,12 +139,16 @@ class App extends Component {
   }
 
   move(direction) {
-    if (this.state.debug === true) {
-      console.log(`Move tiles to ${direction}`);
+    if (this.state.gameOver !== true
+      && this.state.highestTileScore !== goalScore
+    ) {
+      if (this.state.debug === true) {
+        console.log(`Move tiles to ${direction}`);
+      }
+      this.mergeTiles(directionRotates[direction]);
+      this.generateGameTile();
+      this.getHighestTileScore();
     }
-    this.mergeTiles(directionRotates[direction]);
-    this.generateGameTile();
-    this.getHighestTileScore();
   }
 
   componentWillMount(){
