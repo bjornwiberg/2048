@@ -205,7 +205,11 @@ class LandscapeHint extends Component {
     return (
       <div className="landscapeHint">
         <div className="inner">
-          <p>Please rotate screen!</p>
+          <p>
+            Please rotate screen on mobile device<br />
+            or<br />
+            resize window to be more tall than wide.
+          </p>
         </div>
       </div>
     )
