@@ -30,15 +30,22 @@ class App extends Component {
   }
 
   getHighestTileScore() {
-    this.setState(prevState => ({
-      highestTileScore: (
-        this.state.tiles.reduce(function (max, arr) {
-            return max >= Math.max.apply(max, arr) ? max : Math.max.apply(max, arr);
-        }, -Infinity)
-      )
-    }));
-    if (this.state.debug === true) {
-      console.log(`update and set ${this.state.highestTileScore} to highest tile value`);
+    let highestTileScore = (
+      this.state.tiles.reduce(function (max, arr) {
+          return max >= Math.max.apply(max, arr) ? max : Math.max.apply(max, arr);
+      }, -Infinity)
+    );
+    if (highestTileScore > this.state.highestTileScore) {
+      this.setState(prevState => ({
+        highestTileScore: (
+          this.state.tiles.reduce(function (max, arr) {
+              return max >= Math.max.apply(max, arr) ? max : Math.max.apply(max, arr);
+          }, -Infinity)
+        )
+      }));
+      if (this.state.debug === true) {
+        console.log(`update and set ${this.state.highestTileScore} to highest tile value`);
+      }
     }
   }
 
