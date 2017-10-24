@@ -7,7 +7,7 @@ import Swipeable from 'react-swipeable'
 
 class App extends Component {
   state = {
-    debug: true,
+    debug: false,
     initialTiles: 2,
     initialTileValue: 2,
     score: 0,
