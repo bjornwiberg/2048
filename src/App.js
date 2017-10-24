@@ -191,13 +191,21 @@ class App extends Component {
       <div className="app">
         <GameOver state={this.state.gameOver} />
         <Win score={this.state.highestTileScore} />
-        <header>
-          <h1>2048 Clone by Björn Wiberg</h1>
-        </header>
+        <Header text="2048 Clone by Björn Wiberg" />
         <Tiles tiles={this.state.tiles} />
         <Scores score={this.state.score} topTileScore={this.state.highestTileScore} />
       </div>
     );
+  }
+}
+
+class Header extends Component {
+  render() {
+    return (
+      <header>
+        <h1>{this.props.text}</h1>
+      </header>
+    )
   }
 }
 
