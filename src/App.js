@@ -237,7 +237,7 @@ class Header extends Component {
   render() {
     return (
       <header>
-        <h1>{this.props.text}</h1>
+        <h1>{this.props.text} <a href="https://github.com/bjornwiberg/2048" target="_blank" title="Download source code on github"><i className="fa fa-github"></i></a></h1>
       </header>
     )
   }
