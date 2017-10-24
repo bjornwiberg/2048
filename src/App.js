@@ -101,7 +101,7 @@ class App extends Component {
     }
     tmpTiles.forEach(function(row, rowIndex) {
       // filter out non empty tiles
-      tmpTiles[rowIndex] = row.filter(tile => tile != '');
+      tmpTiles[rowIndex] = row.filter(tile => tile !== '');
       // iterate each tiles in filtered row
       tmpTiles[rowIndex].forEach((tile, tileIndex) => {
         // if not first tile in row and same value as previous tile in row
