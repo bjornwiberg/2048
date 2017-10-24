@@ -186,6 +186,7 @@ class App extends Component {
     return (
       <div className="app">
         <GameOver restart={this.restart} state={this.state.gameOver} />
+        <Win restart={this.restart} score={this.state.highestTileScore} />
         <header>
           <h1>2048 Clone by Björn Wiberg</h1>
         </header>
@@ -203,8 +204,24 @@ class GameOver extends Component {
   render() {
     return (
       <div className={`overlay ${this.getOverlayClass()}`}>
-        <div className="gameOver">
-          <p>Game over {this.props.state}</p>
+        <div className="inner gameOver">
+          <p>Game over</p>
+          <p><button onClick={() => {this.props.restart()}}>Start over</button></p>
+        </div>
+      </div>
+    )
+  }
+}
+
+class Win extends Component {
+  getOverlayClass() {
+    return (this.props.score >= 2048 ? 'active' : '');
+  }
+  render() {
+    return (
+      <div className={`overlay ${this.getOverlayClass()}`}>
+        <div className="inner win">
+          <p>Congratulations, you win the game!</p>
           <p><button onClick={() => {this.props.restart()}}>Start over</button></p>
         </div>
       </div>
