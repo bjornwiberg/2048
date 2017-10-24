@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import rotateMatrix from 'rotate-matrix';
 import './App.css';
-import {directionRotates, eventKeys} from './Constants';
+import {directionRotates, eventKeys, goalScore} from './Constants';
 
 class App extends Component {
   state = {
@@ -214,13 +214,16 @@ class GameOver extends Component {
 
 class Win extends Component {
   getOverlayClass() {
-    return (this.props.score >= 2048 ? 'active' : '');
+    return (this.props.score === goalScore ? 'active' : '');
   }
   render() {
     return (
       <div className={`overlay ${this.getOverlayClass()}`}>
         <div className="inner win">
-          <p>Congratulations, you win the game!</p>
+          <p>
+            Congratulations,<br />
+            you reached {goalScore} and won the game!
+          </p>
         </div>
       </div>
     )

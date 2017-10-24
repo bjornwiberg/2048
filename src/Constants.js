@@ -1,3 +1,5 @@
+export const goalScore = 2048;
+
 export const directionRotates = {
   left: 0,
   right: 2,
