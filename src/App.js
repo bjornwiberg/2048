@@ -363,7 +363,7 @@ class Help extends Component {
               <div className="rules">
                 <h2>Rules</h2>
                 <ul>
-                  <li>Move tiles from left to right</li>
+                  <li>Move tiles left, right, up or down</li>
                   <li>Tiles with same value merge into same</li>
                   <li>Game won when first tile get 2048</li>
                 </ul>
