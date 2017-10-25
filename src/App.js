@@ -387,17 +387,17 @@ class Help extends Component {
                   </div>
                   <div className="iconWrapper desktop">
                     <div className="title">Gamer:</div>
-                    <span className="iconButton">w</span>
                     <span className="iconButton">s</span>
                     <span className="iconButton">a</span>
+                    <span className="iconButton">w</span>
                     <span className="iconButton">d</span>
                   </div>
                   <div className="iconWrapper desktop">
                     <div className="title">l33t:</div>
                     <span className="iconButton">h</span>
-                    <span className="iconButton">j</span>
-                    <span className="iconButton">k</span>
                     <span className="iconButton">l</span>
+                    <span className="iconButton">k</span>
+                    <span className="iconButton">j</span>
                   </div>
                 </div>
               </div>
