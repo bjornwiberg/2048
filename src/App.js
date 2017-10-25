@@ -138,6 +138,7 @@ class App extends Component {
     }
     tmpTiles = rotateMatrix(tmpTiles, rotations);
 
+    // merge tiles to left
     let merge = this.mergeTilesToLeft(tmpTiles);
 
     // restore the tile matrix to original state
