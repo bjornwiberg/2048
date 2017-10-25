@@ -111,7 +111,7 @@ header {
   }
 }
 
-.bottom {
+.footer {
   padding-top: 15px;
   text-align: right;
 
@@ -211,6 +211,14 @@ header {
   .bottom {
     margin-top: 20px;
     text-transform: uppercase;
+    text-align: center;
+
+    .fa {
+      font-size: 2em;
+      position: relative;
+      top: 3px;
+      margin-left: 2px;
+    }
   }
 }
 

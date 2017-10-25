@@ -230,7 +230,7 @@ class App extends Component {
         >
             <Tiles tiles={this.state.tiles} />
         </Swipeable>
-        <Bottom />
+        <Footer />
       </div>
     );
   }
@@ -267,10 +267,10 @@ class Header extends Component {
   }
 }
 
-class Bottom extends Component {
+class Footer extends Component {
   render() {
     return (
-      <div className="bottom">
+      <div className="footer">
         <div className="wrap">
           <a href="https://github.com/bjornwiberg/2048" target="_blank" rel="noopener noreferrer" title="Download source code on github">Download source code on github: <i className="fa fa-github"></i></a>
         </div>

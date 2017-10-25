@@ -80,10 +80,10 @@ header {
     top: 2px;
     right: 0; }
 
-.bottom {
+.footer {
   padding-top: 15px;
   text-align: right; }
-  .bottom .fa {
+  .footer .fa {
     vertical-align: middle;
     font-size: 2em; }
 
@@ -154,7 +154,13 @@ header {
     padding-top: 20px; }
   .helper .bottom {
     margin-top: 20px;
-    text-transform: uppercase; }
+    text-transform: uppercase;
+    text-align: center; }
+    .helper .bottom .fa {
+      font-size: 2em;
+      position: relative;
+      top: 3px;
+      margin-left: 2px; }
 
 .infoBar {
   padding: 20px 0;
