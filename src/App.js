@@ -2,12 +2,11 @@ import React, { Component } from 'react';
 import rotateMatrix from 'rotate-matrix';
 import './App.css';
 import 'font-awesome/css/font-awesome.min.css';
-import {directionRotates, eventKeys, goalScore} from './Constants';
+import {directionRotates, eventKeys, goalScore, debugMode} from './Constants';
 import Swipeable from 'react-swipeable'
 
 class App extends Component {
   state = {
-    debug: false,
     initialTiles: 2,
     score: 0,
     highestTileScore: 0,
@@ -25,7 +24,7 @@ class App extends Component {
     this.setState(prevState => ({
       score: prevState.score += value
     }));
-    if (this.state.debug === true) {
+    if (debugMode === true) {
       console.log(`add ${value} to score (${this.state.score})`);
     }
   }
@@ -44,7 +43,7 @@ class App extends Component {
           }, -Infinity)
         )
       }));
-      if (this.state.debug === true) {
+      if (debugMode === true) {
         console.log(`update and set ${this.state.highestTileScore} to highest tile value`);
       }
     }
@@ -94,7 +93,7 @@ class App extends Component {
     /*
       DO THE MAGIC
     */
-    if (this.state.debug === true) {
+    if (debugMode === true) {
       console.log(`merge and move tiles`);
     }
     matrix.forEach(function(row, rowIndex) {
@@ -135,7 +134,7 @@ class App extends Component {
     let tmpTiles = this.state.tiles;
 
     // rotate the tile matrix
-    if (this.state.debug === true) {
+    if (debugMode === true) {
       console.log(`rotate the tile matrix ${rotations} times`);
     }
     tmpTiles = rotateMatrix(tmpTiles, rotations);
@@ -143,7 +142,7 @@ class App extends Component {
     let merge = this.mergeTilesToLeft(tmpTiles);
 
     // restore the tile matrix to original state
-    if (this.state.debug === true) {
+    if (debugMode === true) {
       console.log(`rotate the tile matrix ${rotations} times backwards`);
     }
     tmpTiles = rotateMatrix(merge.matrix, rotations * -1);
@@ -163,7 +162,7 @@ class App extends Component {
     if (this.state.gameOver !== true
       && this.state.highestTileScore !== goalScore
     ) {
-      if (this.state.debug === true) {
+      if (debugMode === true) {
         console.log(`Move tiles to ${direction}`);
       }
       this.mergeTiles(directionRotates[direction]);
@@ -173,7 +172,7 @@ class App extends Component {
   }
 
   componentWillMount(){
-    if (this.state.debug === true) {
+    if (debugMode === true) {
       console.log('mount application');
     }
     document.addEventListener("keydown", this.keyPress.bind(this));

@@ -1,4 +1,5 @@
 export const goalScore = 2048;
+export const debugMode = false;
 
 export const directionRotates = {
   left: 0,
