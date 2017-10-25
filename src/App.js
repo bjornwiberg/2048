@@ -126,8 +126,6 @@ class App extends Component {
   }
 
   mergeTiles(rotations) {
-    
-
     // stringify state tiles
     let orginalState = JSON.stringify(this.state.tiles);
 
