@@ -40,36 +40,77 @@ header {
 button {
   border: 1px solid #e1e1e1; }
 
-.fullScreen, .overlay, .landscapeHint {
+.cur {
+  cursor: pointer; }
+
+.fullScreen, .overlay, .landscapeHint,
+.helper {
   position: fixed;
   z-index: 1;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh; }
-  .fullScreen .inner, .overlay .inner, .landscapeHint .inner {
+  .fullScreen .inner, .overlay .inner, .landscapeHint .inner,
+  .helper .inner {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     font-weight: 700; }
 
-.overlay, .landscapeHint {
+.overlay, .landscapeHint,
+.helper {
   background-color: rgba(255, 255, 255, 0.8);
   opacity: 0;
   visibility: hidden;
   transition: .3s opacity;
-  text-transform: uppercase; }
-  .overlay.active, .active.landscapeHint {
+  text-transform: uppercase;
+  text-align: center; }
+  .overlay.active, .active.landscapeHint,
+  .active.helper {
     opacity: 1;
     visibility: visible; }
 
-.landscapeHint {
+.landscapeHint,
+.helper {
   background-color: rgba(0, 0, 0, 0.8);
-  color: #fff;
-  font-size: 3.5vw; }
-  .landscapeHint .inner {
+  color: #fff; }
+  .landscapeHint .inner,
+  .helper .inner {
     width: 95%; }
+
+.landscapeHint {
+  font-size: 3.5vw;
+  z-index: 2; }
+
+.helper {
+  z-index: 1;
+  opacity: 1;
+  visibility: visible;
+  text-transform: none; }
+  .helper .rules,
+  .helper .motions {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+    padding-bottom: 20px; }
+    .helper .rules h2,
+    .helper .motions h2 {
+      display: inline-block;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.4); }
+  .helper .rules ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0; }
+  .helper .iconButton {
+    color: black; }
+  .helper .iconWrapper {
+    margin: 2%; }
+  .helper .wrap {
+    position: relative;
+    padding-top: 20px; }
+  .helper .bottom {
+    margin-top: 20px;
+    text-transform: uppercase; }
 
 @media (max-width: 768px) and (orientation: landscape) {
   html {
@@ -78,8 +119,7 @@ button {
     opacity: 1;
     visibility: visible; } }
 
-.infoBar,
-.tiles {
+.wrap {
   max-width: 450px;
   margin: 0 auto; }
 
@@ -88,6 +128,9 @@ button {
   overflow: auto; }
   .infoBar .scores {
     float: left; }
+  .infoBar .help {
+    font-size: 20px;
+    float: right; }
 
 .tiles {
   background-color: #e1e1e1;
@@ -133,23 +176,20 @@ button {
         top: 50%;
         transform: translate(-50%, -50%); }
 
-.bottom {
-  text-align: center;
-  margin-top: 15px; }
-  .bottom .iconWrapper {
-    display: inline-block;
-    margin: 5px 2.5px; }
-    .bottom .iconWrapper.mobile {
-      display: none; }
-    .bottom .iconWrapper .title {
-      font-weight: 700; }
-    .bottom .iconWrapper .iconButton {
-      margin: 2px; }
+.iconWrapper {
+  display: inline-block;
+  margin: 5px 2.5px; }
+  .iconWrapper.mobile {
+    display: none; }
+  .iconWrapper .title {
+    font-weight: 700; }
+  .iconWrapper .iconButton {
+    margin: 2px; }
 
 @media (max-width: 1024px) {
-  .bottom .iconWrapper.desktop {
+  .iconWrapper.desktop {
     display: none; }
-  .bottom .iconWrapper .title {
+  .iconWrapper .title {
     display: none; } }
 
 @media (max-width: 600px) {

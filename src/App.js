@@ -18,6 +18,7 @@ class App extends Component {
       ['', '', '', ''],
     ],
     gameOver: false,
+    help: false,
   };
 
   updateScore(value) {
@@ -206,14 +207,21 @@ class App extends Component {
     this.start();
   }
 
+  toggleHelp = () => {
+    this.setState(prevState => ({
+      help: !this.state.help,
+    }));
+  }
+
   render() {
     return (
       <div className="app">
         <LandscapeHint />
+        <Help help={this.state.help} toggleHelp={this.toggleHelp} />
         <GameOver state={this.state.gameOver} />
         <Win score={this.state.highestTileScore} />
         <Header text="2048 Clone by Bj&ouml;rn Wiberg" />
-        <InfoBar score={this.state.score} topTileScore={this.state.highestTileScore} />
+        <InfoBar score={this.state.score} topTileScore={this.state.highestTileScore} toggleHelp={this.toggleHelp} />
         <Swipeable
           onSwipedLeft={() => this.move('left')}
           onSwipedRight={() => this.move('right')}
@@ -222,7 +230,6 @@ class App extends Component {
         >
             <Tiles tiles={this.state.tiles} />
         </Swipeable>
-        <Bottom />
       </div>
     );
   }
@@ -298,7 +305,7 @@ class Tiles extends Component {
   }
   render() {
     return (
-      <div className="tiles">
+      <div className="tiles wrap">
         {this.tiles()}
       </div>
     );
@@ -319,49 +326,76 @@ class Tile extends Component {
 class InfoBar extends Component {
   render() {
     return (
-      <div className="infoBar">
+      <div className="infoBar wrap">
         <div className="scores">
           Score: {this.props.score}, Top tile score: {this.props.topTileScore}
+        </div>
+        <div className="help">
+          <i className="cur fa fa-question-circle-o" onClick={() => {this.props.toggleHelp()}}></i>
         </div>
       </div>
     );
   }
 }
 
-class Bottom extends Component {
+class Help extends Component {
   render() {
-    return (
-      <div className="bottom">
-        <div className="iconWrapper">
-          <div className="title">Touch:</div>
-          <span className="iconButton"><i className="fa fa-hand-o-left"></i></span>
-          <span className="iconButton"><i className="fa fa-hand-o-right"></i></span>
-          <span className="iconButton"><i className="fa fa-hand-o-up"></i></span>
-          <span className="iconButton"><i className="fa fa-hand-o-down"></i></span>
+    if (this.props.help) {
+      return (
+        <div className="helper">
+          <div className="inner">
+            <div className="wrap">
+              <div className="rules">
+                <h2>Rules</h2>
+                <ul>
+                  <li>Move tiles from left to right</li>
+                  <li>Tiles with same value merge into same</li>
+                  <li>Game won when first tile get 2048</li>
+                </ul>
+              </div>
+              <div className="motions">
+                <h2>Move tiles with</h2>
+                <div className="icons">
+                  <div className="iconWrapper">
+                    <div className="title">Touch:</div>
+                    <span className="iconButton"><i className="fa fa-hand-o-left"></i></span>
+                    <span className="iconButton"><i className="fa fa-hand-o-right"></i></span>
+                    <span className="iconButton"><i className="fa fa-hand-o-up"></i></span>
+                    <span className="iconButton"><i className="fa fa-hand-o-down"></i></span>
+                  </div>
+                  <div className="iconWrapper desktop">
+                    <div className="title">Arrows:</div>
+                    <span className="iconButton"><i className="fa fa-arrow-left"></i></span>
+                    <span className="iconButton"><i className="fa fa-arrow-right"></i></span>
+                    <span className="iconButton"><i className="fa fa-arrow-up"></i></span>
+                    <span className="iconButton"><i className="fa fa-arrow-down"></i></span>
+                  </div>
+                  <div className="iconWrapper desktop">
+                    <div className="title">Gamer:</div>
+                    <span className="iconButton">w</span>
+                    <span className="iconButton">s</span>
+                    <span className="iconButton">a</span>
+                    <span className="iconButton">d</span>
+                  </div>
+                  <div className="iconWrapper desktop">
+                    <div className="title">l33t:</div>
+                    <span className="iconButton">h</span>
+                    <span className="iconButton">j</span>
+                    <span className="iconButton">k</span>
+                    <span className="iconButton">l</span>
+                  </div>
+                </div>
+              </div>
+              <div className="bottom">
+                <span className="cur close" onClick={() => {this.props.toggleHelp()}}>Close help <i className="fa fa-times"></i></span>
+              </div>
+            </div>
+          </div>
         </div>
-        <div className="iconWrapper desktop">
-          <div className="title">Arrows:</div>
-          <span className="iconButton"><i className="fa fa-arrow-left"></i></span>
-          <span className="iconButton"><i className="fa fa-arrow-right"></i></span>
-          <span className="iconButton"><i className="fa fa-arrow-up"></i></span>
-          <span className="iconButton"><i className="fa fa-arrow-down"></i></span>
-        </div>
-        <div className="iconWrapper desktop">
-          <div className="title">Gamer:</div>
-          <span className="iconButton">w</span>
-          <span className="iconButton">s</span>
-          <span className="iconButton">a</span>
-          <span className="iconButton">d</span>
-        </div>
-        <div className="iconWrapper desktop">
-          <div className="title">l33t:</div>
-          <span className="iconButton">h</span>
-          <span className="iconButton">j</span>
-          <span className="iconButton">k</span>
-          <span className="iconButton">l</span>
-        </div>
-      </div>
-    );
+      );
+    } else {
+      return null;
+    }
   }
 }
 

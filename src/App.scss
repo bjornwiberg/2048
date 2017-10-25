@@ -52,6 +52,10 @@ button {
   border: 1px solid #e1e1e1;
 }
 
+.cur {
+  cursor: pointer;
+}
+
 .fullScreen {
   position: fixed;
   z-index: 1;
@@ -75,6 +79,7 @@ button {
   visibility: hidden;
   transition: .3s opacity;
   text-transform: uppercase;
+  text-align: center;
 
   @extend .fullScreen;
 
@@ -85,14 +90,62 @@ button {
 
 }
 
-.landscapeHint {
+.landscapeHint,
+.helper {
   @extend .overlay;
   background-color: rgba(#000, .8);
   color: #fff;
-  font-size: 3.5vw;
 
   .inner {
     width: 95%;
+  }
+}
+.landscapeHint {
+  font-size: 3.5vw;
+  z-index: 2;
+}
+
+.helper {
+  z-index: 1;
+  opacity: 1;
+  visibility: visible;
+  text-transform: none;
+
+  .rules,
+  .motions {
+    h2 {
+      display: inline-block;
+      border-bottom: 1px solid rgba(#fff, .4);
+    }
+
+    border-bottom: 1px solid rgba(#fff, .4);
+    padding-bottom: 20px;
+  }
+
+  .rules {
+    ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+    }
+  }
+
+  .iconButton {
+    color: black;
+  }
+
+  .iconWrapper {
+    margin: 2%;
+  }
+
+  .wrap {
+    position: relative;
+    padding-top: 20px;
+  }
+
+  .bottom {
+    margin-top: 20px;
+    text-transform: uppercase;
   }
 }
 
@@ -105,8 +158,8 @@ button {
     visibility: visible;
   }
 }
-.infoBar,
-.tiles {
+
+.wrap {
   max-width: 450px;
   margin: 0 auto;
 }
@@ -117,6 +170,11 @@ button {
   
   .scores {
     float: left;
+  }
+  
+  .help {
+    font-size: 20px;
+    float: right;
   }
 }
 
@@ -194,37 +252,31 @@ button {
   }
 }
 
-.bottom {
-  text-align: center;
-  margin-top: 15px;
+.iconWrapper {
+  display: inline-block;
+  margin: 5px 2.5px;
 
+  &.mobile {
+    display: none;
+  }
+
+  .title {
+    font-weight: 700;
+  }
+
+  .iconButton {
+    margin: 2px;
+  }
+}
+
+@media (max-width: 1024px) {
   .iconWrapper {
-    display: inline-block;
-    margin: 5px 2.5px;
-
-    &.mobile {
+    &.desktop {
       display: none;
     }
 
     .title {
-      font-weight: 700;
-    }
-
-    .iconButton {
-      margin: 2px;
-    }
-  }
-}
-@media (max-width: 1024px) {
-  .bottom {
-    .iconWrapper {
-      &.desktop {
-        display: none;
-      }
-
-      .title {
-        display: none;
-      }
+      display: none;
     }
   }
 }
