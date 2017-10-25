@@ -1,10 +1,38 @@
+:root {
+  --fontColor: #000;
+  --fontSize: 14px;
+}
 html {
-  font-size: 14px;
+  font-size: var(--fontSize);
   line-height: 1.5;
   font-family: sans-serif;
+  color: var(--fontColor);
 
   * {
     font: inherit;
+  }
+}
+
+h1,
+h2 {
+  font-weight: 700;
+}
+
+h1 {
+  font-size: 1.2em;
+}
+
+h2 {
+  font-size: 1.15em;
+  text-transform: uppercase;
+}
+
+a {
+  text-decoration: none;
+  &:active,
+  &:visited {
+    font: inherit;
+    color: inherit;
   }
 }
 
@@ -22,29 +50,43 @@ html {
 }
 
 .app {
-  padding-left: 2vw;
-  padding-right: 2vw;
   overflow-x: hidden;
+
+  @media (max-width: 500px) {
+    padding: 0 2vw 2vw;
+  }
 }
 
 header {
-  box-sizing: border-box;
-  background-color: #000;
-  padding: 2vw;
-  color: white;
-  margin-left: -2vw;
-  width: 102vw;
-  text-align: center;
+  border-bottom: 1px solid rgba(#ccc, .4);
+  line-height: 40px;
+
+  .wrap {
+    position: relative;
+    overflow: auto;
+  }
 
   h1 {
-    font-size: 1em;
+    margin: 0;
+    float: left;
+    padding-right: 35px; 
+  }
+  
+  .help {
+    font-size: 20px;
+    position: absolute;
+    top: 2px;
+    right: 0;
+  }
+}
 
-    .fa {
-      color: #fff;
-      margin-left: 20px;
-      font-size: 2em;
-      vertical-align: middle;
-    }
+.bottom {
+  padding-top: 15px;
+  text-align: right;
+
+  .fa {
+    vertical-align: middle;
+    font-size: 2em;
   }
 }
 
@@ -167,23 +209,17 @@ button {
 .infoBar {
   padding: 20px 0;
   overflow: auto;
-  
-  .scores {
-    float: left;
-  }
-  
-  .help {
-    font-size: 20px;
-    float: right;
-  }
 }
 
 .tiles {
   background-color: #e1e1e1;
   box-sizing: border-box;
   padding: .5% .5% 0;
+  box-shadow: 0 0 10px 1px #ccc;
+  border: 1px solid #ccc;
 
   .tile {
+    box-shadow: inset 0 0 1px 1px #ccc;
     width: 23%;
     margin: .5% 1%;
 

@@ -220,8 +220,8 @@ class App extends Component {
         <Help help={this.state.help} toggleHelp={this.toggleHelp} />
         <GameOver state={this.state.gameOver} />
         <Win score={this.state.highestTileScore} />
-        <Header text="2048 Clone by Bj&ouml;rn Wiberg" />
-        <InfoBar score={this.state.score} topTileScore={this.state.highestTileScore} toggleHelp={this.toggleHelp} />
+        <Header text="2048 Clone by Bj&ouml;rn Wiberg" toggleHelp={this.toggleHelp} />
+        <InfoBar score={this.state.score} topTileScore={this.state.highestTileScore} />
         <Swipeable
           onSwipedLeft={() => this.move('left')}
           onSwipedRight={() => this.move('right')}
@@ -230,6 +230,7 @@ class App extends Component {
         >
             <Tiles tiles={this.state.tiles} />
         </Swipeable>
+        <Bottom />
       </div>
     );
   }
@@ -255,9 +256,26 @@ class Header extends Component {
   render() {
     return (
       <header>
-        <h1>{this.props.text} <a href="https://github.com/bjornwiberg/2048" target="_blank" rel="noopener noreferrer" title="Download source code on github"><i className="fa fa-github"></i></a></h1>
+        <div className="wrap">
+          <h1>{this.props.text}</h1>
+          <div className="help">
+            <i className="cur fa fa-question-circle-o" onClick={() => {this.props.toggleHelp()}}></i>
+          </div>
+        </div>
       </header>
     )
+  }
+}
+
+class Bottom extends Component {
+  render() {
+    return (
+      <div className="bottom">
+        <div className="wrap">
+          <a href="https://github.com/bjornwiberg/2048" target="_blank" rel="noopener noreferrer" title="Download source code on github">Download source code on github: <i className="fa fa-github"></i></a>
+        </div>
+      </div>
+    );
   }
 }
 
@@ -329,9 +347,6 @@ class InfoBar extends Component {
       <div className="infoBar wrap">
         <div className="scores">
           Score: {this.props.score}, Top tile score: {this.props.topTileScore}
-        </div>
-        <div className="help">
-          <i className="cur fa fa-question-circle-o" onClick={() => {this.props.toggleHelp()}}></i>
         </div>
       </div>
     );
