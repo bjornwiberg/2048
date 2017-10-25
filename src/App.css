@@ -1,6 +1,8 @@
 :root {
   --fontColor: #000;
-  --fontSize: 14px; }
+  --fontSize: 14px;
+  --colorLightGrey: #e1e1e1;
+  --colorGrey: #e1e1e1; }
 
 html {
   font-size: var(--fontSize);
@@ -38,11 +40,12 @@ a {
     margin: 2px; }
 
 .iconButton {
-  width: 32px;
-  height: 32px;
-  line-height: 32px;
+  --size: 32px;
+  width: var(--size);
+  height: var(--size);
+  line-height: var(--size);
   font-size: .8em;
-  background-color: #e1e1e1;
+  background-color: var(--lightGrey);
   box-sizing: border-box;
   border-radius: 5px;
   display: inline-block;
@@ -158,11 +161,11 @@ header {
   overflow: auto; }
 
 .tiles {
-  background-color: #e1e1e1;
+  background-color: var(--colorLightGrey);
   box-sizing: border-box;
   padding: .5% .5% 0;
-  box-shadow: 0 0 10px 1px #ccc;
-  border: 1px solid #ccc; }
+  box-shadow: 0 0 10px 1px var(--colorGrey);
+  border: 1px solid var(--colorGrey); }
   .tiles .tile {
     box-shadow: inset 0 0 1px 1px #ccc;
     width: 23%;
