@@ -87,8 +87,46 @@ class App extends Component {
     }
   }
 
-  mergeTiles(rotations) {
+  mergeTilesToLeft(matrix) {
     let valuesMerged = 0;
+
+    // merge tiles with same values and move them to left
+    /*
+      DO THE MAGIC
+    */
+    if (this.state.debug === true) {
+      console.log(`merge and move tiles`);
+    }
+    matrix.forEach(function(row, rowIndex) {
+      // filter out non empty tiles
+      matrix[rowIndex] = row.filter(tile => tile !== '');
+      // iterate each tiles in filtered row
+      matrix[rowIndex].forEach((tile, tileIndex) => {
+        // if not first tile in row and same value as previous tile in row
+        if (tileIndex > 0 && tile === matrix[rowIndex][tileIndex - 1]) {
+          // double the value of previous column
+          matrix[rowIndex][tileIndex - 1] *= 2;
+          // add the updated tiles value to the score counter
+          valuesMerged += matrix[rowIndex][tileIndex - 1];
+          // remove the tile in current iteration
+          matrix[rowIndex].splice(tileIndex, 1);
+        }
+      })
+
+      // push empty values to array until size matches matrix width
+      while (matrix[rowIndex].length < 4) {
+        matrix[rowIndex].push('');
+      }
+    });
+
+    return {
+      matrix: matrix,
+      valuesMerged: valuesMerged,
+    };
+  }
+
+  mergeTiles(rotations) {
+    
 
     // stringify state tiles
     let orginalState = JSON.stringify(this.state.tiles);
@@ -102,40 +140,13 @@ class App extends Component {
     }
     tmpTiles = rotateMatrix(tmpTiles, rotations);
 
-    // merge tiles with same values and move them to left
-    /*
-      DO THE MAGIC
-    */
-    if (this.state.debug === true) {
-      console.log(`merge and move tiles`);
-    }
-    tmpTiles.forEach(function(row, rowIndex) {
-      // filter out non empty tiles
-      tmpTiles[rowIndex] = row.filter(tile => tile !== '');
-      // iterate each tiles in filtered row
-      tmpTiles[rowIndex].forEach((tile, tileIndex) => {
-        // if not first tile in row and same value as previous tile in row
-        if (tileIndex > 0 && tile === tmpTiles[rowIndex][tileIndex - 1]) {
-          // double the value of previous column
-          tmpTiles[rowIndex][tileIndex - 1] *= 2;
-          // add the updated tiles value to the score counter
-          valuesMerged += tmpTiles[rowIndex][tileIndex - 1];
-          // remove the tile in current iteration
-          tmpTiles[rowIndex].splice(tileIndex, 1);
-        }
-      })
-
-      // push empty values to array until size matches matrix width
-      while (tmpTiles[rowIndex].length < 4) {
-        tmpTiles[rowIndex].push('');
-      }
-    });
+    let merge = this.mergeTilesToLeft(tmpTiles);
 
     // restore the tile matrix to original state
     if (this.state.debug === true) {
       console.log(`rotate the tile matrix ${rotations} times backwards`);
     }
-    tmpTiles = rotateMatrix(tmpTiles, rotations * -1);
+    tmpTiles = rotateMatrix(merge.matrix, rotations * -1);
 
     // check if any tiles have been moved
     let anyTilesMoved = JSON.stringify(tmpTiles) !== orginalState;
@@ -145,7 +156,7 @@ class App extends Component {
       allowNewTileToGenerate: anyTilesMoved,
     }));
 
-    this.updateScore(valuesMerged);
+    this.updateScore(merge.valuesMerged);
   }
 
   move(direction) {
