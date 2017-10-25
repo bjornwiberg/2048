@@ -32,6 +32,8 @@ h2 {
 
 a {
   text-decoration: none;
+
+  &,
   &:active,
   &:visited {
     font: inherit;

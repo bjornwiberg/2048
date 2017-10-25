@@ -25,7 +25,7 @@ h2 {
 
 a {
   text-decoration: none; }
-  a:active, a:visited {
+  a, a:active, a:visited {
     font: inherit;
     color: inherit; }
 
