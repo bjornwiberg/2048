@@ -27,6 +27,16 @@ a {
     font: inherit;
     color: inherit; }
 
+.iconWrapper {
+  display: inline-block;
+  margin: 5px 2.5px; }
+  .iconWrapper.mobile {
+    display: none; }
+  .iconWrapper .title {
+    font-weight: 700; }
+  .iconWrapper .iconButton {
+    margin: 2px; }
+
 .iconButton {
   width: 32px;
   height: 32px;
@@ -37,6 +47,13 @@ a {
   border-radius: 5px;
   display: inline-block;
   font-weight: 700; }
+
+.cur {
+  cursor: pointer; }
+
+.wrap {
+  max-width: 450px;
+  margin: 0 auto; }
 
 .app {
   overflow-x: hidden; }
@@ -66,12 +83,6 @@ header {
   .bottom .fa {
     vertical-align: middle;
     font-size: 2em; }
-
-button {
-  border: 1px solid #e1e1e1; }
-
-.cur {
-  cursor: pointer; }
 
 .fullScreen, .overlay, .landscapeHint,
 .helper {
@@ -142,17 +153,6 @@ button {
     margin-top: 20px;
     text-transform: uppercase; }
 
-@media (max-width: 768px) and (orientation: landscape) {
-  html {
-    overflow: hidden; }
-  .landscapeHint {
-    opacity: 1;
-    visibility: visible; } }
-
-.wrap {
-  max-width: 450px;
-  margin: 0 auto; }
-
 .infoBar {
   padding: 20px 0;
   overflow: auto; }
@@ -204,22 +204,15 @@ button {
         top: 50%;
         transform: translate(-50%, -50%); }
 
-.iconWrapper {
-  display: inline-block;
-  margin: 5px 2.5px; }
-  .iconWrapper.mobile {
-    display: none; }
-  .iconWrapper .title {
-    font-weight: 700; }
-  .iconWrapper .iconButton {
-    margin: 2px; }
-
 @media (max-width: 1024px) {
   .iconWrapper.desktop {
     display: none; }
   .iconWrapper .title {
     display: none; } }
 
-@media (max-width: 600px) {
-  .game {
-    max-width: 95vw; } }
+@media (max-width: 768px) and (orientation: landscape) {
+  html {
+    overflow: hidden; }
+  .landscapeHint {
+    opacity: 1;
+    visibility: visible; } }

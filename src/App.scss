@@ -2,6 +2,7 @@
   --fontColor: #000;
   --fontSize: 14px;
 }
+
 html {
   font-size: var(--fontSize);
   line-height: 1.5;
@@ -36,6 +37,23 @@ a {
   }
 }
 
+.iconWrapper {
+  display: inline-block;
+  margin: 5px 2.5px;
+
+  &.mobile {
+    display: none;
+  }
+
+  .title {
+    font-weight: 700;
+  }
+
+  .iconButton {
+    margin: 2px;
+  }
+}
+
 .iconButton {
   $size: 32px;
   width: $size;
@@ -47,6 +65,15 @@ a {
   border-radius: 5px;
   display: inline-block;
   font-weight: 700;
+}
+
+.cur {
+  cursor: pointer;
+}
+
+.wrap {
+  max-width: 450px;
+  margin: 0 auto;
 }
 
 .app {
@@ -88,14 +115,6 @@ header {
     vertical-align: middle;
     font-size: 2em;
   }
-}
-
-button {
-  border: 1px solid #e1e1e1;
-}
-
-.cur {
-  cursor: pointer;
 }
 
 .fullScreen {
@@ -191,21 +210,6 @@ button {
   }
 }
 
-@media (max-width: 768px) and (orientation : landscape) {
-  html {
-    overflow: hidden;
-  }
-  .landscapeHint {
-    opacity: 1;
-    visibility: visible;
-  }
-}
-
-.wrap {
-  max-width: 450px;
-  margin: 0 auto;
-}
-
 .infoBar {
   padding: 20px 0;
   overflow: auto;
@@ -288,23 +292,6 @@ button {
   }
 }
 
-.iconWrapper {
-  display: inline-block;
-  margin: 5px 2.5px;
-
-  &.mobile {
-    display: none;
-  }
-
-  .title {
-    font-weight: 700;
-  }
-
-  .iconButton {
-    margin: 2px;
-  }
-}
-
 @media (max-width: 1024px) {
   .iconWrapper {
     &.desktop {
@@ -317,8 +304,12 @@ button {
   }
 }
 
-@media (max-width: 600px) {
-  .game {
-    max-width: 95vw;
+@media (max-width: 768px) and (orientation : landscape) {
+  html {
+    overflow: hidden;
+  }
+  .landscapeHint {
+    opacity: 1;
+    visibility: visible;
   }
 }
