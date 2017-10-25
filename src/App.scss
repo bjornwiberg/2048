@@ -22,7 +22,6 @@ html {
 }
 
 .app {
-  text-align: center;
   padding-left: 2vw;
   padding-right: 2vw;
   overflow-x: hidden;
@@ -35,6 +34,7 @@ header {
   color: white;
   margin-left: -2vw;
   width: 102vw;
+  text-align: center;
 
   h1 {
     font-size: 1em;
@@ -105,21 +105,30 @@ button {
     visibility: visible;
   }
 }
-
-.scores {
-  padding: 20px 0;
-  font-size: .8em;
-}
-
+.infoBar,
 .tiles {
   max-width: 450px;
   margin: 0 auto;
+}
+
+.infoBar {
+  padding: 20px 0;
+  overflow: auto;
+  
+  .scores {
+    float: left;
+  }
+}
+
+.tiles {
   background-color: #e1e1e1;
-  padding: 1% 0;
+  box-sizing: border-box;
+  padding: .5% .5% 0;
 
   .tile {
-    width: 22%;
-    margin: 1%;
+    width: 23%;
+    margin: .5% 1%;
+
     box-sizing: border-box;
     display: inline-block;
     background-color: #fff;
@@ -186,6 +195,7 @@ button {
 }
 
 .bottom {
+  text-align: center;
   margin-top: 15px;
 
   .iconWrapper {

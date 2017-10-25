@@ -213,7 +213,7 @@ class App extends Component {
         <GameOver state={this.state.gameOver} />
         <Win score={this.state.highestTileScore} />
         <Header text="2048 Clone by Bj&ouml;rn Wiberg" />
-        <Scores score={this.state.score} topTileScore={this.state.highestTileScore} />
+        <InfoBar score={this.state.score} topTileScore={this.state.highestTileScore} />
         <Swipeable
           onSwipedLeft={() => this.move('left')}
           onSwipedRight={() => this.move('right')}
@@ -316,11 +316,13 @@ class Tile extends Component {
   }
 }
 
-class Scores extends Component {
+class InfoBar extends Component {
   render() {
     return (
-      <div className="scores">
-        Score: {this.props.score}, Top tile score: {this.props.topTileScore}
+      <div className="infoBar">
+        <div className="scores">
+          Score: {this.props.score}, Top tile score: {this.props.topTileScore}
+        </div>
       </div>
     );
   }
