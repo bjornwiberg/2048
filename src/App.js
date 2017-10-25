@@ -70,15 +70,16 @@ class App extends Component {
 
   generateGameTile() {
     let freeTiles = this.getFreeTiles();
-    let randomTile = Math.floor((Math.random() * (freeTiles.length)));
-    let tmpTiles = this.state.tiles;
-    // new tiles should have value 2 or 4
-    let tileValue = (1 + Math.floor((Math.random() * 2))) * 2;
     if (freeTiles.length === 0 && !this.state.allowNewTileToGenerate) {
       this.setState(prevState => ({
         gameOver: true
       }));
     } else if (this.state.allowNewTileToGenerate) {
+      let randomTile = Math.floor((Math.random() * (freeTiles.length)));
+      let tmpTiles = this.state.tiles;
+      // new tiles should have value 2 or 4
+      let tileValue = (1 + Math.floor((Math.random() * 2))) * 2;
+
       tmpTiles[freeTiles[randomTile][0]][freeTiles[randomTile][1]] = tileValue;
       this.setState(prevState => ({
         tiles: tmpTiles
