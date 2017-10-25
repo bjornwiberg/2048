@@ -9,7 +9,6 @@ class App extends Component {
   state = {
     debug: false,
     initialTiles: 2,
-    initialTileValue: 2,
     score: 0,
     highestTileScore: 0,
     allowNewTileToGenerate: true,
@@ -74,12 +73,14 @@ class App extends Component {
     let freeTiles = this.getFreeTiles();
     let randomTile = Math.floor((Math.random() * (freeTiles.length)));
     let tmpTiles = this.state.tiles;
+    // new tiles should have value 2 or 4
+    let tileValue = (1 + Math.floor((Math.random() * 2))) * 2;
     if (freeTiles.length === 0 && !this.state.allowNewTileToGenerate) {
       this.setState(prevState => ({
         gameOver: true
       }));
     } else if (this.state.allowNewTileToGenerate) {
-      tmpTiles[freeTiles[randomTile][0]][freeTiles[randomTile][1]] = this.state.initialTileValue;
+      tmpTiles[freeTiles[randomTile][0]][freeTiles[randomTile][1]] = tileValue;
       this.setState(prevState => ({
         tiles: tmpTiles
       }));
